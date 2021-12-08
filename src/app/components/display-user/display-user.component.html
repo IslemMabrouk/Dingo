@@ -1,0 +1,36 @@
+ <!--::chefs_part start::-->
+ <section class="chefs_part blog_item_section section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5">
+                <div class="section_tittle">
+                    <h2>Display User</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-4">
+                <div class="single_blog_item">
+                    <div class="single_blog_img">
+                        <img src="assets/img/team/chefs_1.png" alt="">
+                    </div>
+                    <div class="single_blog_text text-center">
+                        <h3>{{user.firstName}} {{user.lastName}}</h3>
+                        <p>{{user.email}}</p>
+                        <p>{{user.role}}</p>
+                        <p *ngIf="user.role == 'chef'" >{{user.speciality}}</p>
+                        <p *ngIf="user.role == 'chef'" >{{user.experience}} Years</p>
+
+                        <div class="social_icon">
+                            <a href="assets/#"> <i class="ti-facebook"></i> </a>
+                            <a href="assets/#"> <i class="ti-twitter-alt"></i> </a>
+                            <a href="assets/#"> <i class="ti-instagram"></i> </a>
+                            <a href="assets/#"> <i class="ti-skype"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--::chefs_part end::-->

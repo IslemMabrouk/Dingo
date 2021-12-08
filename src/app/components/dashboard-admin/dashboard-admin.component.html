@@ -1,0 +1,106 @@
+<!--::regervation_part start::-->
+<section class="regervation_part section_padding" style="margin-top: 100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5">
+                <div class="section_tittle">
+                   <h2>Dashboard Admin</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="regervation_part_iner">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation" style="color: transparent;">
+                          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Users</button>
+                        </li>
+                        <!-- <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Chefs</button>
+                        </li> -->
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Plats</button>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <table class="table table-dark table-striped">
+                                <tr>
+                                   <th>First Name</th>
+                                   <th>Last Name</th>
+                                   <th>Email</th>
+                                   <th>Phone Number</th>
+                                   <th>Role</th>
+                                   <th>Actions</th>
+                                  </tr>
+
+                                  <tr *ngFor="let a of users">
+                                    <td>{{a.firstName}}</td>
+                                    <td>{{a.lastName}}</td>
+                                    <td>{{a.email}}</td>
+                                    <td>{{a.phone}}</td>
+                                    <!-- <td [ngStyle]="{'color': getColor(a.role)}">{{a.role}}</td> -->
+                                    <td [ngClass]="{'green':a.role=='admin',
+                                                    'blue':a.role=='client' ,
+                                                    'red':a.role=='chef'}" >{{a.role}}</td>
+                                    <td>
+                                      <button type="button" class="btn btn-outline-success" style="margin-left: 10px;" (click)="displayUser(a._id)">Display</button>
+                                      <button type="button" class="btn btn-outline-warning" style="margin-left: 10px;" (click)="editUser(a._id, a.role)">Edit</button>
+                                      <button type="button" class="btn btn-outline-danger" style="margin-left: 10px;" (click)="deleteUser(a._id)">Delete</button>
+                                    </td>
+                                  </tr>
+                              </table>
+                              <button class="btn btn-outline-danger" (click)="getPdf()">Download PDF</button>
+                        </div>
+                        <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                          <table class="table table-dark table-striped">
+                            <tr>
+                               <th>First Name</th>
+                               <th>Last Name</th>
+                               <th>Date Of Birth</th>
+                               <th>Speciality</th>
+                               <th>Experience</th>
+                               <th>Actions</th>
+                              </tr>
+
+                              <tr *ngFor="let a of users">
+                                <td>{{a.firstName | reserve}}</td>
+                                <td>{{a.lastName}}</td>
+                                <td>{{a.dateOfBirth | date}}</td>
+                                <td>{{a.speciality}}</td>
+                                <td>{{a.experience}} Years</td>
+                                <td>
+                                  <button type="button" class="btn btn-outline-success" style="margin-left: 10px;" (click)="displayUser(a._id)">Display</button>
+                                  <button type="button" class="btn btn-outline-warning" style="margin-left: 10px;" (click)="editChef(a._id)">Edit</button>
+                                  <button type="button" class="btn btn-outline-danger" style="margin-left: 10px;" (click)="deleteUser(a._id)">Delete</button>
+                                </td>
+                              </tr>
+                          </table>
+                        </div> -->
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                          <table class="table table-dark table-striped">
+                            <tr>
+                               <th>Plate Name</th>
+                               <th>Price</th>
+                               <th>Description</th>
+                               <th>Chef</th>
+                              </tr>
+
+                              <tr *ngFor="let a of plats">
+                                <td>{{a.platName}}</td>
+                                <td>{{a.price}} Dt</td>
+                                <td>{{a.description}}</td>
+                                <ng-container *ngFor="let u of users">
+                                  <td *ngIf="u._id == a.idChef">{{u.firstName}} {{u.lastName}}</td>
+                                </ng-container>
+                                
+                              </tr>
+                          </table>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--::regervation_part end::-->

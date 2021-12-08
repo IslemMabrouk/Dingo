@@ -1,0 +1,16 @@
+.green{
+    color: green ;
+    font-size: 18px;
+}
+
+/* Class for the clients */
+.blue{
+    color: blue;
+    font-size: 18px;
+}
+
+/* Class for the chefs */
+.red{
+    color: red;
+    font-size: 18px;
+}

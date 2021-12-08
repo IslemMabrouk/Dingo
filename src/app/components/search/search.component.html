@@ -1,0 +1,52 @@
+<!--::regervation_part start::-->
+<section class="regervation_part section_padding" style="margin-top: 100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5">
+                <div class="section_tittle">
+                    <h2>Search</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="regervation_part_iner">
+                    <form #searchForm="ngForm" (ngSubmit)="search()" >
+                        <div class="form-row">
+                    
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="" placeholder="Search *"  [(ngModel)]="chef.searchValue" [ngModelOptions]="{standalone:true}">
+                            </div>
+
+                        </div>
+                        <div class="regerv_btn">
+                            <button  class="btn_4"  > Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="isDisplay" >
+                          <table class="table table-dark table-striped">
+                            <tr>
+                               <th>First Name</th>
+                               <th>Last Name</th>
+                               <th>Date Of Birth</th>
+                               <th>Speciality</th>
+                               <th>Experience</th>
+                              </tr>
+
+                              <tr *ngFor="let c of chefs">
+                                <td>{{c.firstName }}</td>
+                                <td>{{c.lastName}}</td>
+                                <td>{{c.dateOfBirth | date}}</td>
+                                <td>{{c.speciality}}</td>
+                                <td>{{c.experience}} Years</td>
+                              </tr>
+                          </table>
+                        </div>
+        
+</section>
+<!--::regervation_part end::-->
